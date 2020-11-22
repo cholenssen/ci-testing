@@ -1,17 +1,12 @@
 #!/bin/bash
 
-ORGANIZATION=$ORGANIZATION
-ACCESS_TOKEN=$ACCESS_TOKEN
-
-REG_TOKEN=$(curl -sX POST -H "Authorization: token ${ACCESS_TOKEN}" https://api.github.com/orgs/${ORGANIZATION}/actions/runners/registration-token | jq .token --raw-output)
-
 cd /home/docker/actions-runner
 
-./config.sh --url https://github.com/${ORGANIZATION} --token ${REG_TOKEN}
+./config.sh --url https://github.com/cholenssen/ci-testing --token AB5B4XTT33Y273TTFUD3V4K7XMBLI
 
 cleanup() {
     echo "Removing runner..."
-    ./config.sh remove --unattended --token ${REG_TOKEN}
+    ./config.sh remove --unattended --token AB5B4XTT33Y273TTFUD3V4K7XMBLI
 }
 
 trap 'cleanup; exit 130' INT
