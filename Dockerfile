@@ -11,5 +11,7 @@ RUN tar xzf ./actions-runner-linux-x64-2.274.2.tar.gz
 
 RUN ./config.sh --url https://github.com/cholenssen/python-docker-debian --token AB5B4XUAKULVAE6RDVKFJVC7XL4KU
 
+USER docker
+
 # set the entrypoint to the start.sh script
 ENTRYPOINT  ["./run.cmd"]
