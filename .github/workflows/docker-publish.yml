@@ -13,10 +13,6 @@ on:
   # Run tests for any PRs.
   pull_request:
 
-env:
-  # TODO: Change variable to your image's name.
-  ACCESS_TOKEN: ${{secrets.github_token}}  
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -62,7 +58,7 @@ jobs:
         id: buildnumber
         uses: einaregilsson/build-number@v3 
         with:
-          token: ${{secrets.github_token}}  
+          token: ${{secrets.GITHUB_TOKEN}}  
           
       - name: Push image
         id: docker_push
@@ -80,4 +76,4 @@ jobs:
 
     steps:  
     - name: start container
-      run: docker run --env TOKEN=${{secrets.github_token}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
+      run: docker run --env ACCESS_TOKEN=${{secrets.GITHUB_TOKEN}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
