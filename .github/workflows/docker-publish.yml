@@ -70,5 +70,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       
+      - name: List container
+        run: docker ps
       - name: start container
         run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} github-runner:latest 
