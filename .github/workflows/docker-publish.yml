@@ -69,7 +69,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: vcolovic/github-runner:${{ steps.buildnumber.outputs.build_number }},vcolovic/github-runner:latest
+          tags: vcolovic/github-runner:${{steps.buildnumber.outputs.build_number}},vcolovic/github-runner:latest
           builder: ${{ steps.buildx.outputs.name }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -80,4 +80,4 @@ jobs:
 
     steps:  
     - name: start container
-      run: docker run --env TOKEN=${{github.token}} --env REPO=https://github.com/${{ github.repository }} vcolovic/github-runner:latest 
+      run: docker run --env TOKEN=${{secrets.github_token}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
