@@ -1,3 +1,4 @@
+#!/bin/sh
 export RUNNER_ALLOW_RUNASROOT=1
 REPO=$1
 PAT=$2
