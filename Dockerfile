@@ -15,7 +15,6 @@ RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 pyt
 RUN  curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && ./bin/installdependencies.sh
 
-
 # copy over the start.sh script
 COPY start.sh start.sh
 
