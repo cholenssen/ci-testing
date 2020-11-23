@@ -15,5 +15,6 @@ RUN mkdir actions-runner && cd actions-runner \
 WORKDIR /actions-runner
 
 COPY entrypoint.sh entrypoint.sh
+RUN ["chmod", "+x", "entrypoint.sh"]
 
 ENTRYPOINT ["./entrypoint.sh"]
