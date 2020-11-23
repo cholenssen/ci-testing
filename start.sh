@@ -4,7 +4,7 @@ TOKEN = $TOKEN
 
 cd /home/docker/actions-runner
 
-./config.sh --url REPO --token TOKEN
+./config.sh --url https://github.com/${REPO} --token ${TOKEN}
 
 cleanup() {
     echo "Removing runner..."
