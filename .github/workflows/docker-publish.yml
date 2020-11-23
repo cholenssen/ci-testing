@@ -18,7 +18,7 @@ env:
   ACCESS_TOKEN: ${{secrets.github_token}}  
 
 jobs:
-  main:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
     
@@ -46,8 +46,8 @@ jobs:
           push: false
           tags: vcolovic/github-runner:latest
           build-args: |
-            TOKEN=${{ secrets.GITHUB_TOKEN }}
-            REPO= ${{ secrets.GITHUB_SERVER_URL }}/${{ secrets.GITHUB_REPOSITORY }}
+            TOKEN=${{ github.token }}
+            REPO=format('https://github.com/{0}',${{ github.repository }})
       
       - name: Generate build number
         id: buildnumber
@@ -62,5 +62,10 @@ jobs:
           push: true
           tags: vcolovic/github-runner:${{ steps.buildnumber.outputs.build_number }},vcolovic/github-runner:latest
           build-args: |
-            TOKEN=${{ secrets.GITHUB_TOKEN }}
-            REPO= ${{ secrets.GITHUB_SERVER_URL }}/${{ secrets.GITHUB_REPOSITORY }}
+            TOKEN=${{ github.token }}
+            REPO=format('https://github.com/{0}',${{ github.repository }})
+  start_runner:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    container:
+      image: vcolovic/github-runner:latest
