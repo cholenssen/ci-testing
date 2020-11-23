@@ -1,5 +1,6 @@
 #!/bin/sh
 export RUNNER_ALLOW_RUNASROOT=1
+export PATH=$PATH:/actions-runner
 REPO=$1
 PAT=$2
 NAME=$3
