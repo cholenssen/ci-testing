@@ -21,7 +21,7 @@ jobs:
       - name: Get
         run: |
           curl --location --request POST 'https://api.github.com/repos/cholenssen/ci-testing/actions/runners/registration-token' \
-          --header 'Authorization: token 2247b40121962692430061ae4e3d5be37f7d7880' \
+          --header 'Authorization: token 458262ee3bcfaaffced21122e24f2b293066de3fs' \
           --header 'accept: application/vnd.github.v3+json'
       - name: start container
         run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
