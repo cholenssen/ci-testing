@@ -19,6 +19,6 @@ jobs:
 
       steps:  
       - name: Get
-        run:  ${{secrets.GITHUB_TOKEN}}  
+        run: echo "${{secrets.GITHUB_TOKEN}}"
       - name: start container
         run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
