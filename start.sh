@@ -1,6 +1,6 @@
 #!/bin/bash
-REPO = $REPO
-TOKEN = $TOKEN
+REPO=$REPO
+TOKEN=$TOKEN
 
 cd /home/docker/actions-runner
 

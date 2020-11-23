@@ -80,4 +80,4 @@ jobs:
 
     steps:  
     - name: start container
-      run: docker run vcolovic/github-runner:latest --env TOKEN=${{github.token}} --env REPO= https://github.com/${{ github.repository }}
+      run: docker run github-runner:latest --env TOKEN=${{github.token}} --env REPO=https://github.com/${{ github.repository }}
