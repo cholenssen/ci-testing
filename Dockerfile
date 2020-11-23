@@ -17,7 +17,7 @@ RUN cd /home/ && mkdir actions-runner && cd actions-runner \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 # install some additional dependencies
-RUN ./installdependencies.sh
+RUN ./bin/installdependencies.sh
 
 # copy over the start.sh script
 COPY start.sh start.sh
