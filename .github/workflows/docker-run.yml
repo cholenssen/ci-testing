@@ -15,7 +15,6 @@ on:
 
 jobs:
     start_runner:
-      needs: build-and-push
       runs-on: ubuntu-latest
 
       steps:  
