@@ -1,3 +1,4 @@
+export RUNNER_ALLOW_RUNASROOT=1
 REPO=$1
 PAT=$2
 NAME=$3
@@ -15,7 +16,7 @@ token=$(curl -s -XPOST \
     jq -r .token)
 
 ./config.sh \
-    --url https://github.com/${REPO} \
+    --url https://github.com/${REPO}/${REPO} \
     --token ${token} \
     --name ${NAME} \
     --work _work
