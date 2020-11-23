@@ -17,9 +17,11 @@ RUN  curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VE
 
 # copy over the start.sh script
 COPY start.sh start.sh
-
+COPY token.sh /
+RUN chmod +x /token.sh
 # make the script executable
 RUN chmod +x start.sh
 
+RUN chmod +x /start.sh
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["./start.sh"]
