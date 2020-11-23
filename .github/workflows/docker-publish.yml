@@ -75,5 +75,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:  
+    - name: Get request token
+      id: request 
+      run: |
+        curl --location --request POST 'https://api.github.com/repos/cholenssen/ci-testing/actions/runners/registration-token' \
+        --header 'Authorization: token 2247b40121962692430061ae4e3d5be37f7d7880' \
+        --header 'accept: application/vnd.github.v3+json'
     - name: start container
-      run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
+      run: docker run --env ACCESS_TOKEN=2247b40121962692430061ae4e3d5be37f7d7880 --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
