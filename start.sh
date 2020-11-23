@@ -7,7 +7,7 @@ REG_TOKEN=$(curl -sX POST  -H "Authorization: token ${ACCESS_TOKEN}" -H 'accept:
 
 cd /home/docker/actions-runner
 
-./config.sh --url https://github.com/${REPO} --token ${REG_TOKEN}
+./config.sh --url "https://api.github.com/repos/cholenssen/ci-testing" --token ${REG_TOKEN}
 
 cleanup() {
     echo "Removing runner..."
