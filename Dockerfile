@@ -20,4 +20,4 @@ COPY entrypoint.sh entrypoint.sh
 
 USER actions
 
-ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]
