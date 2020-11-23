@@ -1,12 +1,14 @@
 #!/bin/bash
+REPO = $REPO
+TOKEN = $TOKEN
 
 cd /home/docker/actions-runner
 
-./config.sh --url $REPO --token $TOKEN
+./config.sh --url REPO --token TOKEN
 
 cleanup() {
     echo "Removing runner..."
-    ./config.sh remove --unattended --token $TOKEN
+    ./config.sh remove --unattended --token TOKEN
 }
 
 trap 'cleanup; exit 130' INT
