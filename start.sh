@@ -3,7 +3,7 @@
 REPO=$ORGANIZATION
 ACCESS_TOKEN=$ACCESS_TOKEN
 echo  $ACCESS_TOKEN
-REG_TOKEN=$(curl -sX POST  -H "Authorization: token ${ACCESS_TOKEN}" -H 'accept: application/vnd.github.v3+json' "https://api.github.com/repos/${REPO}/actions/runners/registration-token" | jq .token --raw-output)
+REG_TOKEN=$(curl -sX POST  -H "Authorization: token ${ACCESS_TOKEN}" -H 'accept: application/vnd.github.v3+json' "https://api.github.com/repos/cholenssen/ci-testing/actions/runners/registration-token" | jq .token --raw-output)
 
 cd /home/docker/actions-runner
 
