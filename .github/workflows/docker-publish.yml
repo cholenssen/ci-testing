@@ -1,4 +1,4 @@
-name: Docker_Build_And_Publish
+name: DockerRunner
 
 on:
   push:
@@ -64,3 +64,11 @@ jobs:
           build-args: |
             TOKEN=${{ github.token }}
             REPO=format('https://github.com/{0}',${{ github.repository }})
+  start_runner:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    container:
+      image: vcolovic/github-runner:latest
+    steps:  
+    - name: start container
+      run: docker run vcolovic/github-runner:latest
