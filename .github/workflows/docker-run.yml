@@ -1,0 +1,28 @@
+name: DockerRunner2
+
+on:
+  push:
+    # Publish `main` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+jobs:
+    start_runner:
+      needs: build-and-push
+      runs-on: ubuntu-latest
+
+      steps:  
+      - name: Get
+        run: |
+          curl --location --request POST 'https://api.github.com/repos/cholenssen/ci-testing/actions/runners/registration-token' \
+          --header 'Authorization: token 2247b40121962692430061ae4e3d5be37f7d7880' \
+          --header 'accept: application/vnd.github.v3+json'
+      - name: start container
+        run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
