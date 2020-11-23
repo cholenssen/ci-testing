@@ -1,4 +1,4 @@
-name: Docker_Build_And_Publish
+name: Docker_Container_Run
 
 on:
   push:
@@ -19,7 +19,6 @@ env:
 
 jobs:
   start_runner:
-    needs: build-and-push
     runs-on: ubuntu-latest
     container:
       image: vcolovic/github-runner:latest
