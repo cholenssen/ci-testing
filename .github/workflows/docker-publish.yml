@@ -73,4 +73,4 @@ jobs:
       - name: List container
         run: docker ps
       - name: start container
-        run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} github-runner:latest 
+        run: docker run -e ACCESS_TOKEN=${{secrets.API_KEY}} -e REPO=https://github.com/${{github.repository}} github-runner:latest 
