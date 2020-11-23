@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: vcolovic/python
+  ACCESS_TOKEN: ${{secrets.github_token}}  
 
 jobs:
   main:
@@ -45,6 +45,9 @@ jobs:
         with:
           push: false
           tags: vcolovic/github-runner:latest
+          build-args: |
+            TOKEN=${{ secrets.GITHUB_TOKEN }}
+            REPO= ${{ secrets.GITHUB_REPOSITORY }}
       
       - name: Generate build number
         id: buildnumber
@@ -58,3 +61,6 @@ jobs:
         with:
           push: true
           tags: vcolovic/github-runner:${{ steps.buildnumber.outputs.build_number }},vcolovic/github-runner:latest
+          build-args: |
+            TOKEN=${{ secrets.GITHUB_TOKEN }}
+            REPO= ${{ secrets.GITHUB_REPOSITORY }}
