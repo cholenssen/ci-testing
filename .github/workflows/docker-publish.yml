@@ -58,7 +58,7 @@ jobs:
         id: buildnumber
         uses: einaregilsson/build-number@v3 
         with:
-          token: ${{secrets.GITHUB_TOKEN}}  
+          token: ${{secrets.API_KEY}}  
           
       - name: Push image
         id: docker_push
@@ -76,4 +76,4 @@ jobs:
 
     steps:  
     - name: start container
-      run: docker run --env ACCESS_TOKEN=${{secrets.GITHUB_TOKEN}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
+      run: docker run --env ACCESS_TOKEN=${{secrets.API_KEY}} --env REPO=https://github.com/${{github.repository}} vcolovic/github-runner:latest 
