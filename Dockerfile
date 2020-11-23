@@ -13,7 +13,7 @@ WORKDIR /actions-runner
 
 RUN  wget https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz 
-RUN  chmod +x ./bin/installdependencies.sh
+RUN  chmod +x sudo ./bin/installdependencies.sh
 
 
 
