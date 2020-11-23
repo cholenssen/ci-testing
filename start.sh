@@ -12,7 +12,9 @@ if [[ -n "${ACCESS_TOKEN}" ]]; then
   _SHORT_URL=$(echo "${_TOKEN}" | jq -r .short_url)
 fi
 
-./config.sh --url "https://api.github.com/repos/cholenssen/ci-testing" --token "${REG_TOKEN}"
+./config.sh \
+    --url "${_SHORT_URL}" \
+    --token "${RUNNER_TOKEN}" 
 
 cleanup() {
     echo "Removing runner..."
