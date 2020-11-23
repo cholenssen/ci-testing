@@ -12,12 +12,8 @@ RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev
 
 # cd into the user directory, download and unzip the github actions runner
-RUN mkdir actions-runner && cd actions-runner \
-    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+RUN  curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && ./bin/installdependencies.sh
-
-# install some additional dependencies
-RUN cd actions-runner
 
 
 # copy over the start.sh script
