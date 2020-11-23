@@ -2,19 +2,23 @@ FROM ubuntu
 
 ENV RUNNER_VERSION=2.274.2
 
-RUN apt-get update \
+RUN useradd -m actions \
+    && apt-get update \
     && apt-get install -y \
     wget \
     # add curl and jq
     curl \
     jq
 
-RUN mkdir actions-runner && cd actions-runner \
+RUN cd /home/actions && mkdir actions-runner && cd actions-runner \
     && wget https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz 
-WORKDIR /actions-runner
+WORKDIR /home/actions/actions-runner
+
+RUN chown -R actions ~actions && /home/actions/actions-runner/bin/installdependencies.sh 
 
 COPY entrypoint.sh entrypoint.sh
-RUN ["chmod", "+x", "entrypoint.sh"]
 
-ENTRYPOINT ["./entrypoint.sh"]
+USER actions
+
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
