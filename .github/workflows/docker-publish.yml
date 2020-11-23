@@ -47,7 +47,7 @@ jobs:
           tags: vcolovic/github-runner:latest
           build-args: |
             TOKEN=${{ github.token }}
-            REPO=format('https://github.com/{0}',${{ github.repository }})
+            REPO=format(https://github.com/{0},${{ github.repository }})
       
       - name: Generate build number
         id: buildnumber
@@ -63,7 +63,7 @@ jobs:
           tags: vcolovic/github-runner:${{ steps.buildnumber.outputs.build_number }},vcolovic/github-runner:latest
           build-args: |
             TOKEN=${{ github.token }}
-            REPO=format('https://github.com/{0}',${{ github.repository }})
+            REPO=format(https://github.com/{0},${{ github.repository }})
   start_runner:
     needs: build-and-push
     runs-on: ubuntu-latest
